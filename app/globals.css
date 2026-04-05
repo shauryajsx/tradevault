@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg0: #080c14;
+  --bg1: #0e1420;
+  --bg2: #141c2b;
+  --bg3: #1a2437;
+  --bd: #1e2d42;
+  --bdl: #2a3a52;
+  --t1: #e8ecf4;
+  --t2: #8899b0;
+  --t3: #556677;
+  --ac: #d97757;
+  --ach: #c4623f;
+  --acb: rgba(217,119,87,.12);
+  --g: #10b981;
+  --gb: rgba(16,185,129,.10);
+  --gb2: rgba(16,185,129,.18);
+  --r: #ef4444;
+  --rb: rgba(239,68,68,.10);
+  --rb2: rgba(239,68,68,.18);
+  --am: #f59e0b;
+  --amb: rgba(245,158,11,.1);
+  --p: #8b5cf6;
+  --pb: rgba(139,92,246,.1);
+  --tl: #14b8a6;
+  --tlb: rgba(20,184,166,.1);
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg0);
+  color: var(--t1);
+  margin: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bd); border-radius: 3px; }
+
+/* Form inputs */
+.input {
+  width: 100%;
+  padding: 10px 13px;
+  background: var(--bg1);
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  color: var(--t1);
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.input:focus {
+  border-color: var(--ac);
+  box-shadow: 0 0 0 3px var(--acb);
+}
+.input-sl { border-color: var(--r) !important; color: var(--r) !important; }
+.input-tp { border-color: var(--g) !important; color: var(--g) !important; }
+
+/* Toast animation */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.toast-anim { animation: slideIn 0.3s ease; }
+
+/* Loading spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--bd);
+  border-top-color: var(--ac);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Auth background */
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-3%, 2%) rotate(2deg); }
+}
+
+/* Calendar day */
+.cal-day {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px solid var(--bd);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 4px 6px;
+  font-size: 12px;
+  color: var(--t2);
+}
+.cal-day.empty { border-color: transparent; }
+.cal-day.today { border-color: var(--ac); box-shadow: 0 0 0 1px var(--ac); }
+.cal-day.has-win { background: var(--gb); }
+.cal-day.has-loss { background: var(--rb); }
+.cal-day.has-mix { background: linear-gradient(135deg, var(--gb), var(--rb)); }
